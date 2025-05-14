@@ -1,6 +1,6 @@
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
-import { Linking, StyleSheet, View } from 'react-native';
+import { Linking } from 'react-native';
 
 export default function HomeScreen() {
   return (
@@ -9,44 +9,20 @@ export default function HomeScreen() {
             }}>
       <ThemedText type='title'>Gabriela R. B. Lemos</ThemedText>
       <ThemedText type='subtitle'>Cientista de Dados</ThemedText>
-      <View style={styles.paragraphContainer}>
-        <ThemedText>
-          Eu sou uma estudante e <ThemedText type='emphasis'>pesquisadora de ciência da computação</ThemedText> na <ThemedText type='link' 
-            onPress={() => Linking.openURL('https://portal.unicap.br/')}
-          >
-            Universidade Católica de Pernambuco
-          </ThemedText>, com experiência em pesquisa científica, análise e ciência de dados 
-          com habilidades em <ThemedText type='emphasis'>Python</ThemedText> e <ThemedText type='emphasis'>SQL</ThemedText>. 
-          No meu tempo livre eu gosto de ler, fazer <ThemedText type='link' 
-            onPress={() => Linking.openURL('https://github.com/GabrielaRBLemos')}
-          >
-            projetos de ciência de dados
-          </ThemedText> 
-          e fazer yoga.
-        </ThemedText>
-      </View>
+      <ThemedText type='paragraph'>
+        Eu sou uma estudante e <ThemedText type='emphasis'>pesquisadora de ciência da computação</ThemedText> na <ThemedText type='link' 
+          onPress={() => Linking.openURL('https://portal.unicap.br/')}
+        >
+          Universidade Católica de Pernambuco
+        </ThemedText>, com experiência em pesquisa científica, análise e ciência de dados 
+        com habilidades em <ThemedText type='emphasis'>Python</ThemedText> e <ThemedText type='emphasis'>SQL</ThemedText>. 
+        No meu tempo livre eu gosto de ler, fazer <ThemedText type='link' 
+          onPress={() => Linking.openURL('https://github.com/GabrielaRBLemos')}
+        >
+          projetos de ciência de dados
+        </ThemedText> 
+        e fazer yoga.
+      </ThemedText>
     </ParallaxScrollView>
   );
 }
-
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
-  paragraphContainer: {
-    padding: 16,
-  },
-});

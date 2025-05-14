@@ -4,7 +4,7 @@ import { StyleSheet, Text, type TextProps } from 'react-native';
 export type ThemedTextProps = TextProps & {
   lightColor?: string;
   darkColor?: string;
-  type?: 'default' | 'emphasis' | 'title' | 'subtitle' | 'link';
+  type?: 'default' | 'emphasis' | 'title' | 'subtitle' | 'link'|'paragraph';
 };
 
 export function ThemedText({
@@ -24,6 +24,7 @@ export function ThemedText({
         type === 'title' ? styles.title : undefined,
         type === 'subtitle' ? styles.subtitle : undefined,
         type === 'link' ? styles.link : undefined,
+        type === 'paragraph' ? styles.paragraph : undefined,
         style,
       ]}
       {...rest}
@@ -55,5 +56,10 @@ const styles = StyleSheet.create({
   link: {
     lineHeight: 30,
     fontSize: 16,
+  },
+  paragraph: {
+    fontSize: 16,
+    lineHeight: 24,
+    padding: 16,
   },
 });
