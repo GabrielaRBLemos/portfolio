@@ -18,7 +18,9 @@ const MAPPING = {
   'paperplane.fill': 'send',
   'archivebox.fill':'toolbox',
   'book.fill':'school',
-  'briefcase.fill':'briefcase'
+  'briefcase.fill':'briefcase',
+  'tray.fill':'tray-full',
+  'gamecontroller.fill':'gamepad-variant'
 } as IconMapping;
 
 /**

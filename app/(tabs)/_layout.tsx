@@ -46,12 +46,26 @@ export default function TabLayout() {
           title: 'Acadêmica',
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="book.fill" color={color} />,
         }}
-      />\
+      />
       <Tabs.Screen
         name="experienciaProfissional"
         options={{
           title: 'Profissional',
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="briefcase.fill" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="projetos"
+        options={{
+          title: 'Projetos',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="tray.fill" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="jogo"
+        options={{
+          title: 'Jogo',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="gamecontroller.fill" color={color} />,
         }}
       />
     </Tabs>
