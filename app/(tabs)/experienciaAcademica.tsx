@@ -1,50 +1,103 @@
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
+import { useThemeColor } from '@/hooks/useThemeColor';
 import React from 'react';
+import { Dimensions, StyleSheet, View } from 'react-native';
 import { DataTable } from 'react-native-paper';
+import { useSharedValue } from 'react-native-reanimated';
+import Carousel, { ICarouselInstance, Pagination } from 'react-native-reanimated-carousel';
 
-export default function HomeScreen() {
+export default function Academic() {
+    const ref = React.useRef<ICarouselInstance>(null);
+    const progress = useSharedValue<number>(0);
+    const inactivePag = useThemeColor({}, 'tabIconDefault');
+    const activePag = useThemeColor({}, 'text');
+
+    const onPressPagination = (index: number) => {
+        ref.current?.scrollTo({
+            count: index - progress.value,
+            animated: true,
+        });
+    };
+
     return (
-    <ParallaxScrollView
-    headerColors={{ light: '#A1CEDC', dark: '#1D3D47' }}
-    >
-        <ThemedText type='title'>Experiência Acadêmica</ThemedText>
-        <ThemedText type='subtitle'>Certificações</ThemedText>
-        <DataTable>
-        <DataTable.Header>
-            <DataTable.Title><ThemedText type='subtitle'>Ano</ThemedText></DataTable.Title>
-            <DataTable.Title><ThemedText type='subtitle'>Instituição</ThemedText></DataTable.Title>
-            <DataTable.Title><ThemedText type='subtitle'>Curso</ThemedText></DataTable.Title>
-        </DataTable.Header>
+        <ParallaxScrollView
+            headerColors={{ light: '#A1CEDC', dark: '#1D3D47' }}
+        >
+            <ThemedText type='title'>Experiência Acadêmica</ThemedText>
 
-        {certifications.map((cert, index) => (
-            <DataTable.Row key={index}>
-            <DataTable.Cell><ThemedText type='default'>{cert.year}</ThemedText></DataTable.Cell>
-            <DataTable.Cell><ThemedText type='default'>{cert.institution}</ThemedText></DataTable.Cell>
-            <DataTable.Cell><ThemedText type='default'>{cert.course}</ThemedText></DataTable.Cell>
-            </DataTable.Row>
-        ))}
-        </DataTable>
+            <Carousel
+                ref={ref}
+                width={Dimensions.get("window").width * 0.86} // largura do carrossel
+                height={Dimensions.get("window").height * 0.7} // altura do carrossel
+                data={[certifications, initiatives]} // items do carrossel
+                onProgressChange={progress}
+                loop={false}
+                renderItem={({ index }) => (
+                    <View style={styles.carouselItem}>
+                        {index === 0 ? (
+                            <>
+                                <ThemedText type='subtitle'>Certificações</ThemedText>
+                                <DataTable style={styles.dataTable}>
+                                    <DataTable.Header>
+                                        <DataTable.Title><ThemedText type='subtitle'>Ano</ThemedText></DataTable.Title>
+                                        <DataTable.Title><ThemedText type='subtitle'>Instituição</ThemedText></DataTable.Title>
+                                        <DataTable.Title><ThemedText type='subtitle'>Curso</ThemedText></DataTable.Title>
+                                    </DataTable.Header>
 
-        <ThemedText type='subtitle'>Iniciativas</ThemedText>
-        <DataTable>
-        <DataTable.Header>
-            <DataTable.Title><ThemedText type='subtitle'>Ano</ThemedText></DataTable.Title>
-            <DataTable.Title><ThemedText type='subtitle'>Função</ThemedText></DataTable.Title>
-            <DataTable.Title><ThemedText type='subtitle'>Iniciativa</ThemedText></DataTable.Title>
-        </DataTable.Header>
+                                    {certifications.map((cert, index) => (
+                                        <DataTable.Row key={index}>
+                                            <DataTable.Cell><ThemedText type='default'>{cert.year}</ThemedText></DataTable.Cell>
+                                            <DataTable.Cell><ThemedText type='default'>{cert.institution}</ThemedText></DataTable.Cell>
+                                            <DataTable.Cell><ThemedText type='default'>{cert.course}</ThemedText></DataTable.Cell>
+                                        </DataTable.Row>
+                                    ))}
+                                </DataTable>
+                            </>
+                        ) : (
+                            <>
+                                <ThemedText type='subtitle'>Iniciativas</ThemedText>
+                                <DataTable style={styles.dataTable}>
+                                    <DataTable.Header>
+                                        <DataTable.Title><ThemedText type='subtitle'>Ano</ThemedText></DataTable.Title>
+                                        <DataTable.Title><ThemedText type='subtitle'>Função</ThemedText></DataTable.Title>
+                                        <DataTable.Title><ThemedText type='subtitle'>Iniciativa</ThemedText></DataTable.Title>
+                                    </DataTable.Header>
 
-        {initiatives.map((init, index) => (
-            <DataTable.Row key={index}>
-            <DataTable.Cell><ThemedText type='default'>{init.year}</ThemedText></DataTable.Cell>
-            <DataTable.Cell><ThemedText type='default'>{init.role}</ThemedText></DataTable.Cell>
-            <DataTable.Cell><ThemedText type='default'>{init.initiative}</ThemedText></DataTable.Cell>
-            </DataTable.Row>
-        ))}
-        </DataTable>
-    </ParallaxScrollView>
+                                    {initiatives.map((init, index) => (
+                                        <DataTable.Row key={index}>
+                                            <DataTable.Cell><ThemedText type='default'>{init.year}</ThemedText></DataTable.Cell>
+                                            <DataTable.Cell><ThemedText type='default'>{init.role}</ThemedText></DataTable.Cell>
+                                            <DataTable.Cell><ThemedText type='default'>{init.initiative}</ThemedText></DataTable.Cell>
+                                        </DataTable.Row>
+                                    ))}
+                                </DataTable>
+                            </>
+                        )}
+                    </View>
+                )}
+            />
+
+            <Pagination.Basic
+                progress={progress}
+                data={[certifications, initiatives]}
+                dotStyle={{ backgroundColor: inactivePag, borderRadius: 5 }}
+                activeDotStyle={{backgroundColor: activePag}}
+                containerStyle={{ gap: 8, marginTop: 8 }}
+                onPress={onPressPagination}
+            />
+        </ParallaxScrollView>
     );
 }
+
+const styles = StyleSheet.create({
+    carouselItem: {
+        flex: 1,
+    },
+    dataTable: {
+        flex: 1,
+    },
+});
 
 const certifications = [
     { year: '2024', institution: 'IBM', course: 'Python for Data Science, AI & Development' },

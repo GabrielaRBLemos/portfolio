@@ -20,7 +20,7 @@ const MAPPING = {
   'book.fill':'school',
   'briefcase.fill':'briefcase',
   'tray.fill':'tray-full',
-  'gamecontroller.fill':'gamepad-variant'
+  'gamecontroller.fill':'gamepad-variant',
 } as IconMapping;
 
 /**
