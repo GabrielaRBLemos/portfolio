@@ -16,8 +16,6 @@ type IconSymbolName = keyof typeof MAPPING;
 const MAPPING = {
   'house.fill': 'home',
   'paperplane.fill': 'send',
-  'chevron.left.forwardslash.chevron.right': 'code-braces', // Example mapping, adjust as needed
-  'chevron.right': 'chevron-right',
   'archivebox.fill':'toolbox',
   'book.fill':'school',
   'briefcase.fill':'briefcase'

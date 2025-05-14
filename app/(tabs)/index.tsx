@@ -1,6 +1,6 @@
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
-import { Linking, StyleSheet, Text, View } from 'react-native';
+import { Linking, StyleSheet, View } from 'react-native';
 
 export default function HomeScreen() {
   return (
@@ -10,22 +10,20 @@ export default function HomeScreen() {
       <ThemedText type='title'>Gabriela R. B. Lemos</ThemedText>
       <ThemedText type='subtitle'>Cientista de Dados</ThemedText>
       <View style={styles.paragraphContainer}>
-        <Text style={styles.paragraph}>
-          Eu sou uma estudante e <Text style={styles.emphasis}>pesquisadora de ciência da computação</Text> na <Text 
-            style={styles.link} 
+        <ThemedText>
+          Eu sou uma estudante e <ThemedText type='emphasis'>pesquisadora de ciência da computação</ThemedText> na <ThemedText type='link' 
             onPress={() => Linking.openURL('https://portal.unicap.br/')}
           >
             Universidade Católica de Pernambuco
-          </Text>, com experiência em pesquisa científica, análise e ciência de dados 
-          com habilidades em <Text style={styles.emphasis}>Python</Text> e <Text style={styles.emphasis}>SQL</Text>. 
-          No meu tempo livre eu gosto de ler, fazer <Text 
-            style={styles.link} 
+          </ThemedText>, com experiência em pesquisa científica, análise e ciência de dados 
+          com habilidades em <ThemedText type='emphasis'>Python</ThemedText> e <ThemedText type='emphasis'>SQL</ThemedText>. 
+          No meu tempo livre eu gosto de ler, fazer <ThemedText type='link' 
             onPress={() => Linking.openURL('https://github.com/GabrielaRBLemos')}
           >
             projetos de ciência de dados
-          </Text> 
-          e fazer yoga. Espero que você goste do meu site!
-        </Text>
+          </ThemedText> 
+          e fazer yoga.
+        </ThemedText>
       </View>
     </ParallaxScrollView>
   );
@@ -50,16 +48,5 @@ const styles = StyleSheet.create({
   },
   paragraphContainer: {
     padding: 16,
-  },
-  paragraph: {
-    fontSize: 16,
-    lineHeight: 24,
-  },
-  emphasis: {
-    fontStyle: 'italic',
-  },
-  link: {
-    color: 'blue',
-    textDecorationLine: 'underline',
   },
 });

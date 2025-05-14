@@ -1,5 +1,5 @@
 import type { PropsWithChildren } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { SafeAreaView, StatusBar, StyleSheet, View } from 'react-native';
 import Animated, {
   interpolate,
   useAnimatedRef,
@@ -11,7 +11,9 @@ import { ThemedView } from '@/components/ThemedView';
 import { useBottomTabOverflow } from '@/components/ui/TabBarBackground';
 import { useColorScheme } from '@/hooks/useColorScheme';
 
-const HEADER_HEIGHT = 150;
+const STATUS_BAR_HEIGHT = StatusBar.currentHeight || 0;
+
+const HEADER_HEIGHT = STATUS_BAR_HEIGHT + 16;
 
 type Props = PropsWithChildren<{
   headerColors: { dark: string; light: string };
@@ -44,23 +46,25 @@ export default function ParallaxScrollView({
 
   return (
     <ThemedView style={styles.container}>
-      <Animated.ScrollView
-        ref={scrollRef}
-        scrollEventThrottle={16}
-        scrollIndicatorInsets={{ bottom }}
-        contentContainerStyle={{ paddingBottom: bottom }}>
-        <Animated.View style={[styles.header, headerAnimatedStyle]}>
-          <View
-            style={[
-              styles.solidColor,
-              { backgroundColor: headerColors[colorScheme] },
-            ]}
-          >
-            {/* the title will be here */}
-          </View>
-        </Animated.View>
-        <ThemedView style={styles.content}>{children}</ThemedView>
-      </Animated.ScrollView>
+      <SafeAreaView style={styles.safeArea}>
+        <Animated.ScrollView
+          ref={scrollRef}
+          scrollEventThrottle={16}
+          scrollIndicatorInsets={{ bottom }}
+          contentContainerStyle={{ paddingBottom: bottom }}>
+          <Animated.View style={[styles.header, headerAnimatedStyle]}>
+            <View
+              style={[
+                styles.solidColor,
+                { backgroundColor: headerColors[colorScheme] },
+              ]}
+            >
+              {/**/}
+            </View>
+          </Animated.View>
+          <ThemedView style={styles.content}>{children}</ThemedView>
+        </Animated.ScrollView>
+      </SafeAreaView>
     </ThemedView>
   );
 }
