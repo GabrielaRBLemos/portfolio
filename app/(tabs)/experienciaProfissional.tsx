@@ -5,9 +5,7 @@ import { ThemedText } from '@/components/ThemedText';
 
 export default function ExperienciaProfissional(){
     return (
-    <ParallaxScrollView
-            headerColors={{light: '#A1CEDC',dark: '#1D3D47',
-            }}>
+    <ParallaxScrollView>
         <ThemedText>This app includes example code to help you get started.</ThemedText>
     </ParallaxScrollView>
     );

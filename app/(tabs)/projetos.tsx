@@ -28,7 +28,7 @@ export default function Projetos(){
     {
     id: 1,
     title: 'Cadastro de Usuário',
-       image: require('../../assets/images/cadastro.png'), // Adjust the path as necessary
+    image: require('../../assets/images/cadastro.png'),
     link: 'https://progamacao-web-mobile.vercel.app/portfolio/cadastro.html',
     },
     {
@@ -61,9 +61,7 @@ const renderItem = ({ item }: { item: PortfolioItem }) => (
 
 return (
     
-    <ParallaxScrollView
-                headerColors={{ light: '#A1CEDC', dark: '#1D3D47' }}
-            >
+    <ParallaxScrollView>
     <ThemedText type="title">Projetos</ThemedText>
     <Carousel
         ref={ref}

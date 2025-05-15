@@ -4,7 +4,7 @@ import { StyleSheet, Text, type TextProps } from 'react-native';
 export type ThemedTextProps = TextProps & {
   lightColor?: string;
   darkColor?: string;
-  type?: 'default' | 'emphasis' | 'title' | 'subtitle' | 'link'|'paragraph';
+  type?: 'default' | 'emphasis' | 'title' | 'subtitle' | 'subsubtitle' | 'link'|'paragraph';
 };
 
 export function ThemedText({
@@ -23,6 +23,7 @@ export function ThemedText({
         type === 'emphasis' ? styles.emphasis : undefined,
         type === 'title' ? styles.title : undefined,
         type === 'subtitle' ? styles.subtitle : undefined,
+        type === 'subsubtitle' ? styles.subsubtitle : undefined,
         type === 'link' ? styles.link : undefined,
         type === 'paragraph' ? styles.paragraph : undefined,
         style,
@@ -43,13 +44,18 @@ const styles = StyleSheet.create({
     fontStyle: 'italic',
   },
   title: {
-    fontSize: 32,
+    fontSize: 36,
     fontWeight: 'bold',
     lineHeight: 32,
     textAlign:'center',
   },
   subtitle: {
-    fontSize: 20,
+    fontSize: 24,
+    fontWeight: 'bold',
+    textAlign:'center',
+  },
+  subsubtitle: {
+    fontSize: 16,
     fontWeight: 'bold',
     textAlign:'center',
   },
@@ -61,5 +67,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 24,
     padding: 16,
+    textAlign:'center',
   },
 });

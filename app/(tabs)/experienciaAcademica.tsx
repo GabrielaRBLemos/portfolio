@@ -21,9 +21,7 @@ export default function Academic() {
     };
 
     return (
-        <ParallaxScrollView
-            headerColors={{ light: '#A1CEDC', dark: '#1D3D47' }}
-        >
+        <ParallaxScrollView>
             <ThemedText type='title'>Experiência Acadêmica</ThemedText>
 
             <Carousel
@@ -40,9 +38,9 @@ export default function Academic() {
                                 <ThemedText type='subtitle'>Certificações</ThemedText>
                                 <DataTable style={styles.dataTable}>
                                     <DataTable.Header>
-                                        <DataTable.Title><ThemedText type='subtitle'>Ano</ThemedText></DataTable.Title>
-                                        <DataTable.Title><ThemedText type='subtitle'>Instituição</ThemedText></DataTable.Title>
-                                        <DataTable.Title><ThemedText type='subtitle'>Curso</ThemedText></DataTable.Title>
+                                        <DataTable.Title><ThemedText type='subsubtitle'>Ano</ThemedText></DataTable.Title>
+                                        <DataTable.Title><ThemedText type='subsubtitle'>Instituição</ThemedText></DataTable.Title>
+                                        <DataTable.Title><ThemedText type='subsubtitle'>Curso</ThemedText></DataTable.Title>
                                     </DataTable.Header>
 
                                     {certifications.map((cert, index) => (
@@ -59,9 +57,9 @@ export default function Academic() {
                                 <ThemedText type='subtitle'>Iniciativas</ThemedText>
                                 <DataTable style={styles.dataTable}>
                                     <DataTable.Header>
-                                        <DataTable.Title><ThemedText type='subtitle'>Ano</ThemedText></DataTable.Title>
-                                        <DataTable.Title><ThemedText type='subtitle'>Função</ThemedText></DataTable.Title>
-                                        <DataTable.Title><ThemedText type='subtitle'>Iniciativa</ThemedText></DataTable.Title>
+                                        <DataTable.Title><ThemedText type='subsubtitle'>Ano</ThemedText></DataTable.Title>
+                                        <DataTable.Title><ThemedText type='subsubtitle'>Função</ThemedText></DataTable.Title>
+                                        <DataTable.Title><ThemedText type='subsubtitle'>Iniciativa</ThemedText></DataTable.Title>
                                     </DataTable.Header>
 
                                     {initiatives.map((init, index) => (

@@ -9,21 +9,17 @@ import Animated, {
 
 import { ThemedView } from '@/components/ThemedView';
 import { useBottomTabOverflow } from '@/components/ui/TabBarBackground';
-import { useColorScheme } from '@/hooks/useColorScheme';
+import { useThemeColor } from '@/hooks/useThemeColor';
 
 const STATUS_BAR_HEIGHT = StatusBar.currentHeight || 0;
 
 const HEADER_HEIGHT = STATUS_BAR_HEIGHT + 16;
 
-type Props = PropsWithChildren<{
-  headerColors: { dark: string; light: string };
-}>;
+type Props = PropsWithChildren<{}>;
 
 export default function ParallaxScrollView({
   children,
-  headerColors,
 }: Props) {
-  const colorScheme = useColorScheme() ?? 'light';
   const scrollRef = useAnimatedRef<Animated.ScrollView>();
   const scrollOffset = useScrollViewOffset(scrollRef);
   const bottom = useBottomTabOverflow();
@@ -56,7 +52,7 @@ export default function ParallaxScrollView({
             <View
               style={[
                 styles.solidColor,
-                { backgroundColor: headerColors[colorScheme] },
+                { backgroundColor: useThemeColor({}, 'tabIconSelected')},
               ]}
             >
               {/**/}
