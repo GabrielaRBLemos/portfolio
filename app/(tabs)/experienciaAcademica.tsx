@@ -26,9 +26,9 @@ export default function Academic() {
 
             <Carousel
                 ref={ref}
-                width={Dimensions.get("window").width * 0.86} // largura do carrossel
-                height={Dimensions.get("window").height * 0.7} // altura do carrossel
-                data={[certifications, initiatives]} // items do carrossel
+                width={Dimensions.get("window").width * 0.86}
+                height={Dimensions.get("window").height * 0.7}
+                data={[certifications, initiatives]}
                 onProgressChange={progress}
                 loop={false}
                 renderItem={({ index }) => (

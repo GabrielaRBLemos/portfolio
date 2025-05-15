@@ -82,11 +82,13 @@ const Sobre: React.FC = () => {
     <ParallaxScrollView>
       <ThemedText type="title">Sobre o App</ThemedText>
       <ThemedText type="subtitle">Tecnologias Utilizadas:</ThemedText>
+      <View>
       <FlatList
         data={technologies}
         renderItem={renderItem}
         keyExtractor={(item, index) => index.toString()}
       />
+      </View>
     </ParallaxScrollView>
   );
 };
