@@ -1,11 +1,20 @@
+import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { useThemeColor } from '@/hooks/useThemeColor';
 import React from 'react';
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { Dimensions, Image, Linking, StyleSheet, TouchableOpacity } from 'react-native';
 import { useSharedValue } from 'react-native-reanimated';
-import Carousel, { Pagination } from 'react-native-reanimated-carousel';
+import Carousel, { ICarouselInstance, Pagination } from 'react-native-reanimated-carousel';
 
-export default function PortfolioCarousel(){
+interface PortfolioItem {
+    id: number;
+    title: string;
+    image: any;
+    link: string;
+}
+
+export default function Projetos(){
+    const ref = React.useRef<ICarouselInstance>(null);
     const progress = useSharedValue<number>(0);
     const inactivePag = useThemeColor({}, 'tabIconDefault');
     const activePag = useThemeColor({}, 'text');
@@ -15,55 +24,57 @@ export default function PortfolioCarousel(){
             animated: true,
         });
     };
-  const portfolioItems = [
+    const portfolioItems: PortfolioItem[] = [
     {
-      id: 1,
-      title: 'Cadastro de Usuário',
-      // image: require('./Assets/cadastro.png'), // Adjust the path as necessary
-      link: 'https://progamacao-web-mobile.vercel.app/portfolio/cadastro.html',
+    id: 1,
+    title: 'Cadastro de Usuário',
+       image: require('../../assets/images/cadastro.png'), // Adjust the path as necessary
+    link: 'https://progamacao-web-mobile.vercel.app/portfolio/cadastro.html',
     },
     {
-      id: 2,
-      title: 'Minha Rotina - HTML',
-      // image: require('./Assets/raw.png'),
-      link: 'https://progamacao-web-mobile.vercel.app/portfolio/minha-rotina-raw.html',
+    id: 2,
+    title: 'Minha Rotina - HTML',
+    image: require('../../assets/images/raw.png'),
+    link: 'https://progamacao-web-mobile.vercel.app/portfolio/minha-rotina-raw.html',
     },
     {
-      id: 3,
-      title: 'Minha Rotina + CSS',
-      // image: require('./Assets/css.png'),
-      link: 'https://progamacao-web-mobile.vercel.app/portfolio/minha-rotina.html',
+    id: 3,
+    title: 'Minha Rotina + CSS',
+    image: require('../../assets/images/css.png'),
+    link: 'https://progamacao-web-mobile.vercel.app/portfolio/minha-rotina.html',
     },
     {
-      id: 4,
-      title: 'Jogo da Senha',
-      // image: require('./Assets/senha.png'),
-      link: 'https://progamacao-web-mobile.vercel.app/portfolio/senha.html',
+    id: 4,
+    title: 'Jogo da Senha',
+    image: require('../../assets/images/senha.png'),
+    link: 'https://progamacao-web-mobile.vercel.app/portfolio/senha.html',
     },
-  ];
+];
 
-  const renderItem = ({ item }) => (
-    <TouchableOpacity style={styles.portItem} onPress={() => console.log(`Navigate to ${item.link}`)}>
-      {/* Uncomment the line below to display the image */}
-      {/* <Image source={item.image} style={styles.image} /> */}
-      <ThemedText style={styles.title} type="title">{item.title}</ThemedText>
+const renderItem = ({ item }: { item: PortfolioItem }) => (
+    <TouchableOpacity style={styles.portItem} onPress={() => {
+        Linking.openURL(item.link).catch(err => console.error("Failed to open URL:", err));}}>
+    <ThemedText type="subtitle">{item.title}</ThemedText>
+    <Image source={item.image} style={styles.image} />
     </TouchableOpacity>
-  );
+);
 
-  return (
+return (
     
-    <View style={styles.container}>
-      <ThemedText style={styles.header} type="title">Projetos</ThemedText>
-      <Carousel
-        loop
-        width={300} // Adjust width as necessary
-        height={200} // Adjust height as necessary
+    <ParallaxScrollView
+                headerColors={{ light: '#A1CEDC', dark: '#1D3D47' }}
+            >
+    <ThemedText type="title">Projetos</ThemedText>
+    <Carousel
+        ref={ref}
+        width={Dimensions.get("window").width * 0.86}
+        height={Dimensions.get("window").height * 0.7}
         data={portfolioItems}
+        onProgressChange={progress}
+        loop={true}
         renderItem={renderItem}
-        pagingEnabled={true}
-        OnProgressChange={progress}
-      />
-      <Pagination.Basic
+    />
+    <Pagination.Basic
         progress={progress}
         data={portfolioItems}
         dotStyle={{ backgroundColor: inactivePag, borderRadius: 5 }}
@@ -71,30 +82,17 @@ export default function PortfolioCarousel(){
         containerStyle={{ gap: 8, marginTop: 8 }}
         onPress={onPressPagination}
     />
-    </View>
-  );
+    </ParallaxScrollView>
+);
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+portItem: {
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  header: {
-    marginBottom: 16,
-  },
-  portItem: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 16,
-  },
-  image: {
-    width: 100, // Adjust size as necessary
-    height: 100, // Adjust size as necessary
-    marginBottom: 8,
-  },
-  title: {
-    textAlign: 'center',
-  },
+},
+image: {
+    width: Dimensions.get("window").width * 0.86,
+    height:Dimensions.get("window").height * 0.65,
+},
 });

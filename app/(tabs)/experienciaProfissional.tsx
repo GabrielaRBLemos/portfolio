@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 
-export default function experienciaAcademica(){
+export default function ExperienciaProfissional(){
     return (
     <ParallaxScrollView
             headerColors={{light: '#A1CEDC',dark: '#1D3D47',
