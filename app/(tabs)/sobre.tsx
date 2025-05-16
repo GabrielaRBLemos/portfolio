@@ -97,7 +97,7 @@ const Sobre: React.FC = () => {
     return (
         <ParallaxScrollView>
             <ThemedText type="title">Sobre o App</ThemedText>
-            <ThemedText type="subtitle">Tecnologias Utilizadas:</ThemedText>
+            <ThemedText type="subtitle">Tecnologias Utilizadas</ThemedText>
             <View>
                 <FlatList
                     data={technologies}
