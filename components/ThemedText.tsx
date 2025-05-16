@@ -4,7 +4,7 @@ import { StyleSheet, Text, type TextProps } from 'react-native';
 export type ThemedTextProps = TextProps & {
   lightColor?: string;
   darkColor?: string;
-  type?: 'default' | 'emphasis' | 'title' | 'subtitle' | 'subsubtitle' | 'link'|'paragraph';
+  type?: 'default' | 'emphasis' | 'title' | 'subtitle' | 'subsubtitle' | 'link' | 'paragraph' | 'tab';
 };
 
 export function ThemedText({
@@ -12,8 +12,9 @@ export function ThemedText({
   type = 'default',
   ...rest
 }: ThemedTextProps) {
-    const defaultColor = useThemeColor({}, 'text');
-    const color = type === 'default' ? defaultColor : useThemeColor({}, type === 'link' ? 'link' : 'text');
+  const defaultColor = useThemeColor({}, 'text');
+  const tabColor = useThemeColor({}, 'tabIconDefault');
+  const color = type === 'tab' ? tabColor : (type === 'default' ? defaultColor : useThemeColor({}, type === 'link' ? 'link' : 'text'));
 
   return (
     <Text
@@ -26,6 +27,7 @@ export function ThemedText({
         type === 'subsubtitle' ? styles.subsubtitle : undefined,
         type === 'link' ? styles.link : undefined,
         type === 'paragraph' ? styles.paragraph : undefined,
+        type === 'tab' ? styles.tab : undefined,
         style,
       ]}
       {...rest}
@@ -47,17 +49,17 @@ const styles = StyleSheet.create({
     fontSize: 36,
     fontWeight: 'bold',
     lineHeight: 32,
-    textAlign:'center',
+    textAlign: 'center',
   },
   subtitle: {
     fontSize: 24,
     fontWeight: 'bold',
-    textAlign:'center',
+    textAlign: 'center',
   },
   subsubtitle: {
     fontSize: 16,
     fontWeight: 'bold',
-    textAlign:'center',
+    textAlign: 'center',
   },
   link: {
     lineHeight: 30,
@@ -67,6 +69,11 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 24,
     padding: 16,
-    textAlign:'center',
+    textAlign: 'center',
+  },
+  tab: {
+    fontSize: 12,
+    lineHeight: 24,
+    textAlign: 'center',
   },
 });

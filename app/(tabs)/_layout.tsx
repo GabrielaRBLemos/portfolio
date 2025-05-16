@@ -18,23 +18,23 @@ export default function TabLayout() {
       <TabList style={styles.tabBar,{backgroundColor:tabColor,paddingLeft: 8,paddingRight: 8,paddingBottom: 32,paddingTop: 8,borderWidth: 1, borderColor: iconColor,}}>
         <TabTrigger name="index" href="/" style={styles.tab}>
           <IconSymbol size={28} name="house.fill" color={iconColor} />
-          <ThemedText>Home</ThemedText>
+          <ThemedText type='tab'>Home</ThemedText>
         </TabTrigger>
         <TabTrigger name="sobre" href="/sobre" style={styles.tab}>
           <IconSymbol size={28} name="archivebox.fill" color={iconColor} />
-          <ThemedText>Sobre</ThemedText>
+          <ThemedText type='tab'>Sobre</ThemedText>
         </TabTrigger>
         <TabTrigger name="experienciaAcademica" href="/experienciaAcademica" style={styles.tab}>
           <IconSymbol size={28} name="book.fill" color={iconColor} />
-          <ThemedText>Sobre</ThemedText>
+          <ThemedText type='tab'>Acadêmica</ThemedText>
         </TabTrigger>
         <TabTrigger name="experienciaProfissional" href="/experienciaProfissional" style={styles.tab}>
           <IconSymbol size={28} name="briefcase.fill" color={iconColor} />
-          <ThemedText>Profissional</ThemedText>
+          <ThemedText type='tab'>Profissional</ThemedText>
         </TabTrigger>
         <TabTrigger name="projetos" href="/projetos" style={styles.tab}>
           <IconSymbol size={28} name="tray.fill" color={iconColor} />
-          <ThemedText>Projetos</ThemedText>
+          <ThemedText type='tab'>Projetos</ThemedText>
         </TabTrigger>
       </TabList>
     </Tabs>
