@@ -1,24 +1,22 @@
 {
   "expo": {
-    "name": "portfolio",
-    "slug": "portfolio",
+    "name": "Portfolio",
+    "slug": "Portfolio",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "portfolio",
+    "scheme": "Portfolio",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.anonymous.portfolio"
+      "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true,
-      "package": "com.anonymous.portfolio"
+      "edgeToEdgeEnabled": true
     },
     "web": {
       "bundler": "metro",

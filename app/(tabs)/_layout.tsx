@@ -1,73 +1,61 @@
-import { Tabs } from 'expo-router';
+import { TabList, Tabs, TabSlot, TabTrigger } from 'expo-router/ui';
 import React from 'react';
-import { Platform } from 'react-native';
+import { StyleSheet } from "react-native";
 
-import { HapticTab } from '@/components/HapticTab';
+import { ThemedText } from "@/components/ThemedText";
 import { IconSymbol } from '@/components/ui/IconSymbol';
-import TabBarBackground from '@/components/ui/TabBarBackground';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
+  const iconColor = Colors[colorScheme ?? 'light'].tabIconDefault
+  const tabColor = Colors[colorScheme ?? 'light'].background
 
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
-        tabBarBackground: TabBarBackground,
-        tabBarStyle: Platform.select({
-          ios: {
-            // Use a transparent background on iOS to show the blur effect
-            position: 'absolute',
-          },
-          default: {},
-        }),
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="sobre"
-        options={{
-          title: 'Sobre',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="archivebox.fill" color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="experienciaAcademica"
-        options={{
-          title: 'Acadêmica',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="book.fill" color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="experienciaProfissional"
-        options={{
-          title: 'Profissional',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="briefcase.fill" color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="projetos"
-        options={{
-          title: 'Projetos',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="tray.fill" color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="jogo"
-        options={{
-          title: 'Jogo',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="gamecontroller.fill" color={color} />,
-        }}
-      />
+    <Tabs >
+      <TabSlot />
+      <TabList style={styles.tabBar,{backgroundColor:tabColor,paddingLeft: 8,paddingRight: 8,paddingBottom: 32,paddingTop: 8,borderWidth: 1, borderColor: iconColor,}}>
+        <TabTrigger name="index" href="/" style={styles.tab}>
+          <IconSymbol size={28} name="house.fill" color={iconColor} />
+          <ThemedText>Home</ThemedText>
+        </TabTrigger>
+        <TabTrigger name="sobre" href="/sobre" style={styles.tab}>
+          <IconSymbol size={28} name="archivebox.fill" color={iconColor} />
+          <ThemedText>Sobre</ThemedText>
+        </TabTrigger>
+        <TabTrigger name="experienciaAcademica" href="/experienciaAcademica" style={styles.tab}>
+          <IconSymbol size={28} name="book.fill" color={iconColor} />
+          <ThemedText>Sobre</ThemedText>
+        </TabTrigger>
+        <TabTrigger name="experienciaProfissional" href="/experienciaProfissional" style={styles.tab}>
+          <IconSymbol size={28} name="briefcase.fill" color={iconColor} />
+          <ThemedText>Profissional</ThemedText>
+        </TabTrigger>
+        <TabTrigger name="projetos" href="/projetos" style={styles.tab}>
+          <IconSymbol size={28} name="tray.fill" color={iconColor} />
+          <ThemedText>Projetos</ThemedText>
+        </TabTrigger>
+      </TabList>
     </Tabs>
   );
 }
+const styles = StyleSheet.create({
+  barContainer: {
+    flex: 1,
+  },
+  tabBar: {
+    paddingLeft: 16,
+    paddingRight: 16,
+    paddingBottom: 32,
+    paddingTop: 8,
+    borderWidth: 1,
+    borderStyle: "dashed",
+  },
+  tab:{
+    flex:1,
+    flexDirection:'column',
+    justifyContent:'center',
+    alignItems:'center',
+  },
+});
