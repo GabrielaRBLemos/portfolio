@@ -49,6 +49,8 @@ const styles = StyleSheet.create({
     padding: 32,
     gap: 16,
     overflow: 'hidden',
+    alignItems:'center',
+    justifyContent:'center',
   },
   paddingTop: {
     height: STATUS_BAR_HEIGHT + 16,
