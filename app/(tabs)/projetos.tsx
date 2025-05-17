@@ -1,4 +1,4 @@
-import ParallaxScrollView from "@/components/ParallaxScrollView";
+import ThemedScrollView from "@/components/ThemedScrollView";
 import { ThemedText } from "@/components/ThemedText";
 import { useThemeColor } from "@/hooks/useThemeColor";
 import React from "react";
@@ -75,12 +75,12 @@ export default function Projetos() {
     );
 
     return (
-        <ParallaxScrollView>
+        <ThemedScrollView>
             <ThemedText type="title">Projetos</ThemedText>
             <Carousel
                 ref={ref}
                 width={Dimensions.get("window").width * 0.86}
-                height={Dimensions.get("window").height * 0.7}
+                height={Dimensions.get("window").height * 0.68}
                 data={portfolioItems}
                 onProgressChange={progress}
                 loop={true}
@@ -94,7 +94,7 @@ export default function Projetos() {
                 containerStyle={{ gap: 8, marginTop: 8 }}
                 onPress={onPressPagination}
             />
-        </ParallaxScrollView>
+        </ThemedScrollView>
     );
 }
 

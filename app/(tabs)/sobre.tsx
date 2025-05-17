@@ -1,9 +1,8 @@
-import ParallaxScrollView from "@/components/ParallaxScrollView";
 import { ThemedText } from "@/components/ThemedText";
 import { IconSymbol } from "@/components/ui/IconSymbol";
 import { useThemeColor } from "@/hooks/useThemeColor";
 import { default as React, useState } from "react";
-import { FlatList, StyleSheet, TouchableOpacity, View } from "react-native";
+import { FlatList, SafeAreaView, StatusBar, StyleSheet, TouchableOpacity, View } from "react-native";
 
 interface Technology {
     title: string;
@@ -93,30 +92,38 @@ const Sobre: React.FC = () => {
             />
         );
     };
-
+    const STATUS_BAR_HEIGHT = StatusBar.currentHeight || 0;
+    const background = useThemeColor({}, 'background');
     return (
-        <ParallaxScrollView>
-            <ThemedText type="title">Sobre o App</ThemedText>
-            <ThemedText type="subtitle">Tecnologias Utilizadas</ThemedText>
-            <View>
-                <FlatList
-                    data={technologies}
-                    renderItem={renderItem}
-                    keyExtractor={(item, index) => index.toString()}
-                />
-            </View>
-        </ParallaxScrollView>
+        <SafeAreaView style={styles.safeArea}>
+            <FlatList
+                data={technologies}
+                renderItem={renderItem}
+                keyExtractor={(item, index) => index.toString()}
+                style={{marginTop:STATUS_BAR_HEIGHT,paddingTop:STATUS_BAR_HEIGHT + 16, flex:1, padding:32, gap:16, backgroundColor:background,}}
+                ListHeaderComponent={
+                    <>
+                        <ThemedText type="title">Sobre o App</ThemedText>
+                        <ThemedText type="subtitle">Tecnologias Utilizadas</ThemedText>
+                    </>
+                }
+            />
+        </SafeAreaView>
     );
 };
 
 const styles = StyleSheet.create({
+    safeArea: {
+    flex: 1,
+    },
     itemContainer: {
         flex: 1,
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
-        padding: 8,
+        padding: 16,
         borderBottomWidth: 1,
     },
 });
+
 export default Sobre;

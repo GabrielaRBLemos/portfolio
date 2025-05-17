@@ -12,7 +12,7 @@ const STATUS_BAR_HEIGHT = StatusBar.currentHeight || 0;
 
 type Props = PropsWithChildren<{}>;
 
-export default function ParallaxScrollView({
+export default function ThemedScrollView({
   children,
 }: Props) {
   const scrollRef = useAnimatedRef<Animated.ScrollView>();

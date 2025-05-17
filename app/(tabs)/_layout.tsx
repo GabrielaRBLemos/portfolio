@@ -18,10 +18,10 @@ export default function TabLayout() {
       <TabList style={styles.tabBar,{backgroundColor:tabColor,paddingLeft: 8,paddingRight: 8,paddingBottom: 32,paddingTop: 8,borderWidth: 1, borderColor: iconColor,}}>
         <TabTrigger name="index" href="/" style={styles.tab}>
           <IconSymbol size={28} name="house.fill" color={iconColor} />
-          <ThemedText type='tab'>Home</ThemedText>
+          <ThemedText type='tab'>Início</ThemedText>
         </TabTrigger>
         <TabTrigger name="sobre" href="/sobre" style={styles.tab}>
-          <IconSymbol size={28} name="archivebox.fill" color={iconColor} />
+          <IconSymbol size={28} name="info.circle.fill" color={iconColor} />
           <ThemedText type='tab'>Sobre</ThemedText>
         </TabTrigger>
         <TabTrigger name="experienciaAcademica" href="/experienciaAcademica" style={styles.tab}>

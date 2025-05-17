@@ -1,4 +1,4 @@
-import ParallaxScrollView from "@/components/ParallaxScrollView";
+import ThemedScrollView from "@/components/ThemedScrollView";
 import { ThemedText } from "@/components/ThemedText";
 import { Button, Dimensions, Linking, StyleSheet, View } from "react-native";
 
@@ -6,7 +6,7 @@ const width = Dimensions.get("window").width * 0.86;
 
 export default function ExperienciaProfissional() {
     return (
-        <ParallaxScrollView>
+        <ThemedScrollView>
             <ThemedText type="title">Experiência Profissional</ThemedText>
             <ThemedText type="paragraph">
                 Eu não possuo experiência profissional em computação ainda... Mas você
@@ -34,7 +34,7 @@ export default function ExperienciaProfissional() {
                     accessibilityLabel="Acesse meu LinkedIn"
                 />
             </View>
-        </ParallaxScrollView>
+        </ThemedScrollView>
     );
 }
 const styles = StyleSheet.create({

@@ -1,10 +1,10 @@
-import ParallaxScrollView from "@/components/ParallaxScrollView";
+import ThemedScrollView from "@/components/ThemedScrollView";
 import { ThemedText } from "@/components/ThemedText";
 import { Linking } from "react-native";
 
 export default function HomeScreen() {
     return (
-        <ParallaxScrollView>
+        <ThemedScrollView>
             <ThemedText type="title">Gabriela R. B. Lemos</ThemedText>
             <ThemedText type="subtitle">Cientista de Dados</ThemedText>
             <ThemedText type="paragraph">
@@ -37,6 +37,6 @@ export default function HomeScreen() {
                 > projetos de ciência de dados </ThemedText>
                 e fazer yoga.
             </ThemedText>
-        </ParallaxScrollView>
+        </ThemedScrollView>
     );
 }

@@ -1,4 +1,4 @@
-import ParallaxScrollView from "@/components/ParallaxScrollView";
+import ThemedScrollView from "@/components/ThemedScrollView";
 import { ThemedText } from "@/components/ThemedText";
 import { useThemeColor } from "@/hooks/useThemeColor";
 import React from "react";
@@ -24,13 +24,13 @@ export default function Academic() {
     };
 
     return (
-        <ParallaxScrollView>
+        <ThemedScrollView>
             <ThemedText type="title">Experiência Acadêmica</ThemedText>
 
             <Carousel
                 ref={ref}
                 width={Dimensions.get("window").width * 0.86}
-                height={Dimensions.get("window").height * 0.66}
+                height={Dimensions.get("window").height * 0.64}
                 data={[certifications, initiatives]}
                 onProgressChange={progress}
                 loop={false}
@@ -115,7 +115,7 @@ export default function Academic() {
                 containerStyle={{ gap: 8, marginTop: 8 }}
                 onPress={onPressPagination}
             />
-        </ParallaxScrollView>
+        </ThemedScrollView>
     );
 }
 
